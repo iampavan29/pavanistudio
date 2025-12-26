@@ -2,13 +2,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navigation Scroll Effect
     const header = document.querySelector('.main-header');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || window.location.pathname === '';
+
+    const updateHeader = () => {
+        if (window.scrollY > 50 || !isHomePage) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-    });
+    };
+
+    window.addEventListener('scroll', updateHeader);
+    updateHeader(); // Run on load
 
     // Mobile Menu Toggle
     const menuBtn = document.querySelector('.mobile-menu-btn');

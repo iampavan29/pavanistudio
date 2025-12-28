@@ -682,6 +682,32 @@ img {
     text-align: center;
 }
 
+.social-links {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.social-follow-text {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
 .copyright {
     text-align: center;
     padding-top: 30px;

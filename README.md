@@ -9,7 +9,7 @@ A premium, modern web presence for Pavani Studio.
 
 ## Project Structure
 - `index.html`: Home page
-- `about.html`: About the studio
+- `about.html`: About Us page
 - `services.html`: Services offered
 - `portfolio.html`: Showcase of work
 - `css/style.css`: Main styling

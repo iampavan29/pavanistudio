@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Pavani Studios | State's Best Photographers</title>
+    <title>Project Details - Pavani Studios</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -37,74 +37,35 @@
     <!-- Inner Hero -->
     <section class="section-padding" style="background: #111; padding-top: 150px; text-align: center;">
         <div class="container">
-            <h1 class="fade-in">Our <span class="gold-text">Portfolio</span></h1>
-            <p class="fade-in" style="color: #ccc;">Visual excellence across every genre.</p>
+            <h1 class="fade-in" id="project-title">Project <span class="gold-text">Details</span></h1>
+            <p class="fade-in" id="project-category" style="color: #ccc;">Wedding Photography</p>
         </div>
     </section>
 
-    <!-- Portfolio Case Studies Grid -->
-    <section id="portfolio" class="portfolio-section section-padding">
+    <!-- Project Details Section -->
+    <section class="section-padding project-details-section">
         <div class="container">
-            <div class="case-study-grid">
-                <!-- Case Study 1 -->
-                <div class="case-study-card" onclick="window.location.href='portfolio-details.html?id=ajay-sweety'">
-                    <img src="images/portfolio-user-1.jpg" alt="Ajay weds Sweety">
-                    <div class="case-study-overlay">
-                        <h3>Ajay weds Sweety</h3>
-                        <p>Wedding | Hyderabad</p>
-                    </div>
-                </div>
+            <!-- Tabs Navigation -->
+            <div class="portfolio-tabs fade-in">
+                <button class="tab-btn active" data-tab="engagement">Engagement</button>
+                <button class="tab-btn" data-tab="pre-wedding">Pre-Wedding</button>
+                <button class="tab-btn" data-tab="sangeet">Sangeet</button>
+                <button class="tab-btn" data-tab="marriage">Marriage</button>
+                <button class="tab-btn" data-tab="reception">Reception</button>
+                <button class="tab-btn" data-tab="highlights">Highlights</button>
+                <button class="tab-btn" data-tab="videos">Videos</button>
+            </div>
 
-                <!-- Case Study 2 -->
-                <div class="case-study-card" onclick="window.location.href='portfolio-details.html?id=rohan-meera'">
-                    <img src="images/portfolio-item-3.jpg" alt="Rohan & Meera">
-                    <div class="case-study-overlay">
-                        <h3>Rohan & Meera</h3>
-                        <p>Pre-Wedding | Ramappa</p>
-                    </div>
-                </div>
+            <!-- Tab Content -->
+            <div id="gallery-container" class="gallery-grid fade-in">
+                <!-- Dynamic Content Loaded Here -->
+            </div>
 
-                <!-- Case Study 3 -->
-                <div class="case-study-card"
-                    onclick="window.location.href='portfolio-details.html?id=kavya-engagement'">
-                    <img src="images/portfolio-item-5.jpg" alt="Kavya's Engagement">
-                    <div class="case-study-overlay">
-                        <h3>Kavya's Engagement</h3>
-                        <p>Engagement | Warangal</p>
-                    </div>
-                </div>
-
-                <!-- Case Study 4 -->
-                <div class="case-study-card" onclick="window.location.href='portfolio-details.html?id=sangeet-night'">
-                    <img src="images/portfolio-item-9.jpg" alt="Sangeet Night">
-                    <div class="case-study-overlay">
-                        <h3>Sangeet Night</h3>
-                        <p>Event | Parkal</p>
-                    </div>
-                </div>
-
-                <!-- Case Study 5 -->
-                <div class="case-study-card" onclick="window.location.href='portfolio-details.html?id=luxury-villa'">
-                    <img src="images/home-tour.png" alt="Luxury Villa">
-                    <div class="case-study-overlay">
-                        <h3>Luxury Villa Tour</h3>
-                        <p>Architecture | Hyderabad</p>
-                    </div>
-                </div>
-
-                <!-- Case Study 6 -->
-                <div class="case-study-card" onclick="window.location.href='portfolio-details.html?id=corporate-event'">
-                    <img src="images/office-interview.png" alt="Corporate Event">
-                    <div class="case-study-overlay">
-                        <h3>Corporate Event</h3>
-                        <p>Corporate | Madhapur</p>
-                    </div>
-                </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="portfolio" class="btn-primary">Back to Portfolio</a>
             </div>
         </div>
     </section>
-
-
 
     <!-- Footer -->
     <footer class="footer-section">
@@ -154,14 +115,15 @@
                 <div class="locate-us-section fade-in">
                     <p class="social-follow-text">Locate Us</p>
                     <div class="locations-grid">
-                        <!-- Hyderabad -->
                         <div class="location-card">
                             <div class="icon-box">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <h4>Hyderabad</h4>
-                            <div class="loc-details">
+                            <a href="https://maps.app.goo.gl/ZULz55Uejv1FxSyE8" target="_blank" class="location-link">
+                                <h4>Hyderabad</h4>
                                 <p>MK Heights (7th Floor),<br>Gachibowli, Hyderabad</p>
+                            </a>
+                            <div class="loc-details">
                                 <a href="tel:8106923334" class="phone-link"><i class="fas fa-phone-alt"></i>
                                     8106923334</a>
                                 <a href="https://maps.app.goo.gl/ZULz55Uejv1FxSyE8" target="_blank" class="map-btn">
@@ -170,14 +132,15 @@
                             </div>
                         </div>
 
-                        <!-- Parkal -->
                         <div class="location-card">
                             <div class="icon-box">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <h4>Parkal</h4>
-                            <div class="loc-details">
+                            <a href="https://maps.app.goo.gl/JhjEFDHg5drVgwBW7" target="_blank" class="location-link">
+                                <h4>Parkal</h4>
                                 <p>Pavani Studios, Main Road,<br>Parkal (506164)</p>
+                            </a>
+                            <div class="loc-details">
                                 <a href="tel:9849447112" class="phone-link"><i class="fas fa-phone-alt"></i>
                                     9849447112</a>
                                 <a href="https://maps.app.goo.gl/JhjEFDHg5drVgwBW7" target="_blank" class="map-btn">

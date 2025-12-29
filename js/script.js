@@ -139,18 +139,37 @@ document.addEventListener('DOMContentLoaded', () => {
         counterObserver.observe(statsSection);
     }
 
-    // Simple Testimonial Slider (Auto-play)
-    // For a real production app, use Swiper.js or Slick
-    // This is a placeholder logic for now
-    let currentSlide = 0;
-    // const slides = document.querySelectorAll('.testimonial-slide');
-    // if (slides.length > 1) {
-    //     setInterval(() => {
-    //         slides[currentSlide].style.display = 'none';
-    //         currentSlide = (currentSlide + 1) % slides.length;
-    //         slides[currentSlide].style.display = 'block';
-    //     }, 5000);
-    // }
+    // Testimonial Slider Logic
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial-slide');
+
+    // Function to show a specific testimonial
+    window.showTestimonial = (n) => {
+        if (testimonials.length === 0) return;
+
+        // Wrap around logic
+        if (n >= testimonials.length) currentTestimonial = 0;
+        else if (n < 0) currentTestimonial = testimonials.length - 1;
+        else currentTestimonial = n;
+
+        // Hide all
+        testimonials.forEach(slide => {
+            slide.classList.remove('active');
+        });
+
+        // Show current
+        testimonials[currentTestimonial].classList.add('active');
+    };
+
+    // Global function for buttons
+    window.changeTestimonial = (direction) => {
+        showTestimonial(currentTestimonial + direction);
+    };
+
+    // Initialize the first one
+    if (testimonials.length > 0) {
+        showTestimonial(0);
+    }
 });
 
 // Photo Slideshow Logic
@@ -187,7 +206,7 @@ function goToSlide(n) {
 
 function startAutoplay() {
     if (document.querySelectorAll('.slide').length === 0) return;
-    
+
     autoplayInterval = setInterval(() => {
         showSlide(currentSlideIndex + 1);
     }, 4000);
@@ -215,5 +234,137 @@ function toggleAutoplay() {
 document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.slideshow-container')) {
         startAutoplay();
+    }
+
+    // Contact Form Handler (EmailJS)
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
+
+            // These IDs from your EmailJS dashboard
+            const serviceID = 'YOUR_SERVICE_ID';
+            const templateID = 'YOUR_TEMPLATE_ID';
+
+            // Parameters to match your EmailJS template
+            const templateParams = {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value,
+                to_name: 'Pavani Studios',
+            };
+
+            emailjs.send(serviceID, templateID, templateParams)
+                .then(() => {
+                    submitBtn.innerText = 'Message Sent!';
+                    alert('Thank you! Your message has been sent successfully. We will get back to you soon.');
+                    contactForm.reset();
+                    setTimeout(() => {
+                        submitBtn.innerText = originalBtnText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }, (err) => {
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                    alert('Failed to send message. Please check your internet connection or try again later.\nError: ' + JSON.stringify(err));
+                    console.error('EmailJS Error:', err);
+                });
+        });
+    }
+
+
+    // ==========================================
+    // Portfolio Case Study Logic
+    // ==========================================
+    const projectTitle = document.getElementById('project-title');
+    if (projectTitle) {
+        // We are on portfolio-details.html
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get('id');
+
+        // Mock Data (Replace with real image paths later)
+        const portfolioData = {
+            "ajay-sweety": {
+                title: "Ajay weds Sweety",
+                category: "Wedding Photography",
+                tabs: {
+                    "engagement": ["images/portfolio-item-5.jpg", "images/portfolio-item-7.jpg", "images/portfolio-item-8.jpg"],
+                    "pre-wedding": ["images/portfolio-item-3.jpg", "images/portfolio-user-2.jpg", "images/portfolio-item-4.jpg"],
+                    "sangeet": ["images/portfolio-item-9.jpg", "images/portfolio-user-1.jpg"],
+                    "marriage": ["images/portfolio-user-1.jpg", "images/portfolio-item-5.jpg", "images/portfolio-item-7.jpg"],
+                    "reception": ["images/portfolio-item-8.jpg", "images/portfolio-item-9.jpg"],
+                    "highlights": ["images/portfolio-user-1.jpg", "images/portfolio-user-2.jpg"],
+                    "videos": [] // Video placeholders if needed
+                }
+            },
+            "rohan-meera": {
+                title: "Rohan & Meera",
+                category: "Pre-Wedding Shoot",
+                tabs: {
+                    "engagement": [],
+                    "pre-wedding": ["images/portfolio-item-3.jpg", "images/portfolio-item-4.jpg"],
+                    "sangeet": [],
+                    "marriage": [],
+                    "reception": [],
+                    "highlights": ["images/portfolio-item-3.jpg"],
+                    "videos": []
+                }
+            }
+            // Add other cases as needed
+        };
+
+        const currentProject = portfolioData[projectId];
+
+        if (currentProject) {
+            // Set Title & Category
+            projectTitle.innerHTML = `${currentProject.title}`;
+            document.getElementById('project-category').innerText = currentProject.category;
+
+            // Tab Switching Logic
+            const tabs = document.querySelectorAll('.tab-btn');
+            const galleryContainer = document.getElementById('gallery-container');
+
+            function loadGallery(tabName) {
+                galleryContainer.innerHTML = ''; // Clear existing
+                const images = currentProject.tabs[tabName] || [];
+
+                if (images.length === 0) {
+                    galleryContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #777;">No images available for this section.</p>';
+                    return;
+                }
+
+                images.forEach(imgSrc => {
+                    const div = document.createElement('div');
+                    div.className = 'gallery-item fade-in';
+                    div.innerHTML = `<img src="${imgSrc}" alt="${tabName} image">`;
+                    galleryContainer.appendChild(div);
+                });
+            }
+
+            // Initial Load
+            loadGallery('engagement');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Add active class
+                    tab.classList.add('active');
+                    // Load content
+                    loadGallery(tab.dataset.tab);
+                });
+            });
+
+        } else {
+            // Fallback if ID not found
+            if (projectTitle) projectTitle.innerText = "Project Not Found";
+        }
     }
 });

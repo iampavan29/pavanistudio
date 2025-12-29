@@ -1,6 +1,6 @@
-# Pavani Studio
+# Pavani Studios
 
-A premium, modern web presence for Pavani Studio.
+A premium, modern web presence for Pavani Studios.
 
 ## Features
 - **Modern UI/UX**: Clean, professional design with smooth transitions.

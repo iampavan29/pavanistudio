@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pavani Studio | Hyderabad's Top Wedding Photographers</title>
+    <title>Pavani Studios | Hyderabad's Top Wedding Photographers</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -15,8 +15,8 @@
     <header class="main-header">
         <div class="container header-container">
             <div class="logo">
-                <a href="./" style="font-weight: 700; font-size: 1.5rem; color: #fff;">
-                    PAVANI <span class="gold-text">STUDIO</span>
+                <a href="./">
+                    PAVANI <span class="gold-text">STUDIOS</span>
                 </a>
             </div>
             <nav class="main-nav">
@@ -25,6 +25,7 @@
                     <li><a href="about">About Us</a></li>
                     <li><a href="portfolio">Portfolio</a></li>
                     <li><a href="services">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu-btn">
@@ -38,8 +39,8 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content container">
-            <h1 class="fade-in">Hyderabad's Top <br><span class="gold-text">Wedding</span> Photographers</h1>
-            <p class="fade-in">Capturing the soul of your most precious moments.</p>
+            <h1 class="fade-in">State's Best <br><span class="gold-text">Wedding</span> Photographers</h1>
+            <p class="fade-in">Based in Hyderabad, Warangal & Parkal. Capturing your timeless memories.</p>
             <div class="scroll-down fade-in">
                 <span>Scroll Down</span>
                 <i class="fas fa-chevron-down"></i>
@@ -50,10 +51,12 @@
     <!-- About Summary -->
     <section id="about" class="section-padding" style="text-align: center;">
         <div class="container">
-            <h2 class="section-title fade-in">Welcome to <span>Pavani Studio</span></h2>
+            <h2 class="section-title fade-in">Welcome to <span>Pavani Studios</span></h2>
             <p class="fade-in" style="max-width: 800px; margin: 0 auto 30px; color: #ccc;">
-                We are a premium photography studio based in Jubilee Hills, Hyderabad. With over a decade of experience,
-                we specialize in capturing the raw emotions of Indian weddings and timeless cinematic memories.
+                Ranked as one of the best photography studios in the state, we are proudly based out of Hyderabad,
+                Warangal, and Parkal.
+                With over a decade of experience, we specialize in capturing the raw emotions of Indian weddings and
+                timeless cinematic memories across the region.
             </p>
             <div class="fade-in">
                 <a href="about" class="btn-primary">Our Story</a>
@@ -61,35 +64,43 @@
         </div>
     </section>
 
-    <!-- Portfolio Summary -->
-    <section id="portfolio" class="portfolio-section section-padding" style="background: #050505;">
+    <!-- Recent Projects Summary -->
+    <section id="recent-projects" class="portfolio-section section-padding" style="background: #050505;">
         <div class="container">
-            <h2 class="section-title fade-in">Our <span>Portfolio</span></h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item fade-in">
-                    <img src="images/portfolio-user-1.jpg" alt="Wedding">
-                    <div class="overlay">
-                        <h3>Bride Portrait</h3>
-                        <p>Wedding</p>
+            <h2 class="section-title fade-in">Recent <span>Projects</span></h2>
+            <div class="case-study-grid">
+                <!-- Highlight 1 -->
+                <div class="case-study-card fade-in"
+                    onclick="window.location.href='portfolio-details.html?id=ajay-sweety'">
+                    <img src="images/portfolio-user-1.jpg" alt="Ajay weds Sweety">
+                    <div class="case-study-overlay">
+                        <h3>Ajay weds Sweety</h3>
+                        <p>Wedding | Hyderabad</p>
                     </div>
                 </div>
-                <div class="portfolio-item fade-in">
-                    <img src="images/portfolio-user-2.jpg" alt="Portrait">
-                    <div class="overlay">
-                        <h3>Cinematic B&W</h3>
-                        <p>Portrait</p>
+
+                <!-- Highlight 2 -->
+                <div class="case-study-card fade-in"
+                    onclick="window.location.href='portfolio-details.html?id=rohan-meera'">
+                    <img src="images/portfolio-item-3.jpg" alt="Rohan & Meera">
+                    <div class="case-study-overlay">
+                        <h3>Rohan & Meera</h3>
+                        <p>Pre-Wedding | Ramappa</p>
                     </div>
                 </div>
-                <div class="portfolio-item fade-in">
-                    <img src="images/portfolio-item-3.jpg" alt="Pre-Wedding">
-                    <div class="overlay">
-                        <h3>Priya & Amit</h3>
-                        <p>Pre-Wedding</p>
+
+                <!-- Highlight 3 -->
+                <div class="case-study-card fade-in"
+                    onclick="window.location.href='portfolio-details.html?id=sangeet-night'">
+                    <img src="images/portfolio-item-9.jpg" alt="Sangeet Night">
+                    <div class="case-study-overlay">
+                        <h3>Sangeet Night</h3>
+                        <p>Event | Parkal</p>
                     </div>
                 </div>
             </div>
             <div class="center-btn fade-in">
-                <a href="portfolio" class="btn-primary">View Full Portfolio</a>
+                <a href="portfolio" class="btn-primary">View All Projects</a>
             </div>
         </div>
     </section>
@@ -125,13 +136,128 @@
         <div class="container">
             <h2 class="section-title fade-in">Client <span>Love</span></h2>
             <div class="testimonial-slider fade-in">
-                <div class="testimonial-slide">
+                <!-- Navigation Buttons -->
+                <button class="testi-nav-btn prev" onclick="changeTestimonial(-1)">❮</button>
+                <button class="testi-nav-btn next" onclick="changeTestimonial(1)">❯</button>
+
+                <!-- Slide 1 -->
+                <div class="testimonial-slide active">
                     <div class="stars">★★★★★</div>
                     <p>"The best decision we made for our wedding! The photos are absolutely breathtaking. They made us
                         feel so comfortable."</p>
                     <div class="client-info">
                         <img src="images/client-avatar.jpg" alt="Client">
                         <h4>Anjali & Vikram</h4>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p>"Pavani Studios captured our love perfectly. every shot feels like a scene from a movie. We are
+                        so happy!"</p>
+                    <div class="client-info">
+                        <img src="images/portfolio-user-1.jpg" alt="Client">
+                        <h4>Sita & Ram</h4>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p>"The team was so professional and patient. They understood exactly what we wanted and delivered
+                        beyond expectations."</p>
+                    <div class="client-info">
+                        <img src="images/portfolio-user-2.jpg" alt="Client">
+                        <h4>Anita & Rohan</h4>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p>"Cinematic genius! The pre-wedding shoot was so much fun, and the wedding photos are just
+                        magical."</p>
+                    <div class="client-info">
+                        <img src="images/portfolio-item-3.jpg" alt="Client">
+                        <h4>Meera & Arjun</h4>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p>"Every photo is a masterpiece. We are struggling to choose which ones to frame because they are
+                        all so good!"</p>
+                    <div class="client-info">
+                        <img src="images/portfolio-item-4.jpg" alt="Client">
+                        <h4>Kavya & Rahul</h4>
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p>"Highly recommended for anyone looking for premium quality. Worth every penny for these timeless
+                        memories."</p>
+                    <div class="client-info">
+                        <img src="images/portfolio-item-5.jpg" alt="Client">
+                        <h4>Sneha & Vivek</h4>
+                    </div>
+                </div>
+
+                <!-- Slide 7 -->
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p>"They made us look like movie stars. The lighting, phone composition, and editing are just
+                        top-notch."</p>
+                    <div class="client-info">
+                        <img src="images/portfolio-item-7.jpg" alt="Client">
+                        <h4>Pooja & Karthik</h4>
+                    </div>
+                </div>
+
+                <!-- Slide 8 -->
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p>"Great attention to detail. They didn't miss a single important moment of our big day. Thank you
+                        Pavani Studios!"</p>
+                    <div class="client-info">
+                        <img src="images/portfolio-item-8.jpg" alt="Client">
+                        <h4>Nisha & Sameer</h4>
+                    </div>
+                </div>
+
+                <!-- Slide 9 -->
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p>"Timeless memories preserved forever. The album quality is fantastic and the video editing is
+                        superb."</p>
+                    <div class="client-info">
+                        <img src="images/portfolio-item-9.jpg" alt="Client">
+                        <h4>Lakshmi & Prasad</h4>
+                    </div>
+                </div>
+
+                <!-- Slide 10 -->
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p>"Simply the best in Hyderabad. If you want your wedding photos to stand out, go with Pavani
+                        Studios."</p>
+                    <div class="client-info">
+                        <img src="images/recent-1.jpg" alt="Client">
+                        <h4>Divya & Rajesh</h4>
+                    </div>
+                </div>
+
+                <!-- Slide 11 -->
+                <div class="testimonial-slide">
+                    <div class="stars">★★★★★</div>
+                    <p>"We cherish these photos every day. The candid shots are our favorites—so natural and full of
+                        emotion."</p>
+                    <div class="client-info">
+                        <img src="images/recent-3.jpg" alt="Client">
+                        <h4>Swathi & Vijay</h4>
                     </div>
                 </div>
             </div>
@@ -144,14 +270,14 @@
             <div class="contact-info-centered">
                 <div class="logo" style="margin-bottom: 30px;">
                     <a href="./" style="font-weight: 700; font-size: 1.5rem; color: #fff;">
-                        PAVANI <span class="gold-text">STUDIO</span>
+                        PAVANI <span class="gold-text">STUDIOS</span>
                     </a>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-building gold-text"></i>
                     <a href="https://maps.app.goo.gl/JhjEFDHg5drVgwBW7" target="_blank"
                         style="color: inherit; text-decoration: none;">
-                        <p>Pavani Studio, Main Road, Parkal (506164)</p>
+                        <p>Pavani Studios, Main Road, Parkal (506164)</p>
                     </a>
                 </div>
                 <div class="info-item">
@@ -164,26 +290,64 @@
                 </div>
                 <p class="social-follow-text">Follow Us</p>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/pavani_photography_?igsh=dWU4cjhxYzk1d3R3&utm_source=qr"
-                        target="_blank" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://youtube.com/@pavaniphotography4743?si=BBV_xKPS1biLXvK0" target="_blank"
-                        aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://www.facebook.com/share/1BNQftD7da/?mibextid=wwXIfr" target="_blank"
-                        aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
                     <a href="https://wa.me/918341847112?text=hi%20can%20i%20get%20more%20info%20on%20this"
-                        target="_blank" aria-label="WhatsApp">
+                        target="_blank" aria-label="WhatsApp" class="whatsapp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
+                    <a href="https://www.instagram.com/pavani_photography_?igsh=dWU4cjhxYzk1d3R3&utm_source=qr"
+                        target="_blank" aria-label="Instagram" class="instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/share/1BNQftD7da/?mibextid=wwXIfr" target="_blank"
+                        aria-label="Facebook" class="facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://youtube.com/@pavaniphotography4743?si=BBV_xKPS1biLXvK0" target="_blank"
+                        aria-label="YouTube" class="youtube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+
+                <!-- Locate Us Section -->
+                <div class="locate-us-section fade-in">
+                    <p class="social-follow-text">Locate Us</p>
+                    <div class="locations-grid">
+                        <!-- Hyderabad -->
+                        <div class="location-card">
+                            <div class="icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4>Hyderabad</h4>
+                            <div class="loc-details">
+                                <p>MK Heights (7th Floor),<br>Gachibowli, Hyderabad</p>
+                                <a href="tel:8106923334" class="phone-link"><i class="fas fa-phone-alt"></i>
+                                    8106923334</a>
+                                <a href="https://maps.app.goo.gl/ZULz55Uejv1FxSyE8" target="_blank" class="map-btn">
+                                    <i class="fas fa-location-arrow"></i> Navigate
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Parkal -->
+                        <div class="location-card">
+                            <div class="icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4>Parkal</h4>
+                            <div class="loc-details">
+                                <p>Pavani Studios, Main Road,<br>Parkal (506164)</p>
+                                <a href="tel:9849447112" class="phone-link"><i class="fas fa-phone-alt"></i>
+                                    9849447112</a>
+                                <a href="https://maps.app.goo.gl/JhjEFDHg5drVgwBW7" target="_blank" class="map-btn">
+                                    <i class="fas fa-location-arrow"></i> Navigate
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2024 Pavani Studio. All Rights Reserved.</p>
+                <p>&copy; 2024 Pavani Studios. All Rights Reserved.</p>
             </div>
         </div>
     </footer>

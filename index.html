@@ -7,6 +7,14 @@
     <title>Pavani Studios | Hyderabad's Top Wedding Photographers</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Performance Preloads -->
+    <link rel="preload" as="image" href="images/hero-bg.jpg" fetchpriority="high">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+
+    <!-- Optimize Font Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 <body>
@@ -36,7 +44,9 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="hero-bg"></div>
+        <!-- Optimized LCP: Img tag instead of background-image -->
+        <img src="images/hero-bg.jpg" alt="Pavani Studios Background" class="hero-bg-img" fetchpriority="high"
+            style="position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
         <div class="hero-overlay"></div>
         <div class="hero-content container">
             <h1 class="fade-in">State's Best <br><span class="gold-text">Wedding</span> Photographers</h1>
@@ -72,7 +82,7 @@
                 <!-- Highlight 1 -->
                 <div class="case-study-card fade-in"
                     onclick="window.location.href='portfolio-details.html?id=ajay-sweety'">
-                    <img src="images/portfolio-user-1.jpg" alt="Ajay weds Sweety">
+                    <img src="images/portfolio-user-1.jpg" alt="Ajay weds Sweety" loading="lazy">
                     <div class="case-study-overlay">
                         <h3>Ajay weds Sweety</h3>
                         <p>Wedding</p>
@@ -82,7 +92,7 @@
                 <!-- Highlight 2 -->
                 <div class="case-study-card fade-in"
                     onclick="window.location.href='portfolio-details.html?id=rohan-meera'">
-                    <img src="images/portfolio-item-3.jpg" alt="Rohan & Meera">
+                    <img src="images/portfolio-item-3.jpg" alt="Rohan & Meera" loading="lazy">
                     <div class="case-study-overlay">
                         <h3>Rohan & Meera</h3>
                         <p>Pre-Wedding</p>
@@ -92,7 +102,7 @@
                 <!-- Highlight 3 -->
                 <div class="case-study-card fade-in"
                     onclick="window.location.href='portfolio-details.html?id=sangeet-night'">
-                    <img src="images/portfolio-item-9.jpg" alt="Sangeet Night">
+                    <img src="images/portfolio-item-9.jpg" alt="Sangeet Night" loading="lazy">
                     <div class="case-study-overlay">
                         <h3>Sangeet Night</h3>
                         <p>Event</p>
@@ -146,7 +156,7 @@
                     <p>"The best decision we made for our wedding! The photos are absolutely breathtaking. They made us
                         feel so comfortable."</p>
                     <div class="client-info">
-                        <img src="images/portfolio-item-5.jpg" alt="Client">
+                        <img src="images/portfolio-item-5.jpg" alt="Client" loading="lazy">
                         <h4>Anjali & Vikram</h4>
                     </div>
                 </div>
@@ -157,7 +167,7 @@
                     <p>"Pavani Studios captured our love perfectly. every shot feels like a scene from a movie. We are
                         so happy!"</p>
                     <div class="client-info">
-                        <img src="images/client-sita-ram.png" alt="Client">
+                        <img src="images/client-sita-ram.png" alt="Client" loading="lazy">
                         <h4>Sita & Ram</h4>
                     </div>
                 </div>
@@ -168,7 +178,7 @@
                     <p>"The team was so professional and patient. They understood exactly what we wanted and delivered
                         beyond expectations."</p>
                     <div class="client-info">
-                        <img src="images/client-anita-rohan.png" alt="Client">
+                        <img src="images/client-anita-rohan.png" alt="Client" loading="lazy">
                         <h4>Anita & Rohan</h4>
                     </div>
                 </div>

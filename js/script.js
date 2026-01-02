@@ -1,3 +1,6 @@
+// Global variable for Intersection Observer
+let observer;
+
 document.addEventListener('DOMContentLoaded', () => {
     // Navigation Scroll Effect
     const header = document.querySelector('.main-header');
@@ -94,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: "0px 0px -50px 0px"
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
@@ -300,8 +303,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     "highlights": ["images/portfolio-item-3.jpg"],
                     "videos": []
                 }
+            },
+            "anniversary-70": {
+                title: "70th Wedding Anniversary",
+                category: "Event Photography",
+                tabs: {
+                    "father-mother-70-years": [
+                        "images/70th-anniversary/221A1912.jpg", "images/70th-anniversary/221A1926.jpg", "images/70th-anniversary/221A1946.jpg", "images/70th-anniversary/221A1955.jpg", "images/70th-anniversary/221A1961.jpg",
+                        "images/70th-anniversary/221A1965.jpg", "images/70th-anniversary/221A1968.jpg", "images/70th-anniversary/221A2011.jpg", "images/70th-anniversary/221A2024.jpg", "images/70th-anniversary/221A2119.jpg",
+                        "images/70th-anniversary/221A2134.jpg", "images/70th-anniversary/221A2140.jpg", "images/70th-anniversary/221A2141.jpg", "images/70th-anniversary/NNK04293.jpg", "images/70th-anniversary/NNK04297.jpg",
+                        "images/70th-anniversary/NNK04304%202.jpg", "images/70th-anniversary/NNK04304.jpg", "images/70th-anniversary/NNK04317%202.jpg", "images/70th-anniversary/NNK04317.jpg", "images/70th-anniversary/NNK04331%202.jpg",
+                        "images/70th-anniversary/NNK04331.jpg", "images/70th-anniversary/NNK04357%202.jpg", "images/70th-anniversary/NNK04357.jpg", "images/70th-anniversary/NNK04359.jpg", "images/70th-anniversary/NNK04365.jpg"
+                    ],
+                    "sons-and-grandchildren": [
+                        "images/70th-anniversary/221A2181.jpg", "images/70th-anniversary/221A2194.jpg", "images/70th-anniversary/221A2196.jpg", "images/70th-anniversary/221A2241.jpg", "images/70th-anniversary/221A2242.jpg",
+                        "images/70th-anniversary/221A2245.jpg", "images/70th-anniversary/221A2264.jpg", "images/70th-anniversary/221A2274.jpg", "images/70th-anniversary/NNK04392.jpg", "images/70th-anniversary/NNK04399.jpg",
+                        "images/70th-anniversary/NNK04403.jpg", "images/70th-anniversary/NNK04416.jpg", "images/70th-anniversary/NNK04474.jpg", "images/70th-anniversary/NNK04478.jpg", "images/70th-anniversary/NNK04480.jpg",
+                        "images/70th-anniversary/NNK04484.jpg", "images/70th-anniversary/NNK04518.jpg", "images/70th-anniversary/NNK04530.jpg", "images/70th-anniversary/NNK04542.jpg", "images/70th-anniversary/NNK04551.jpg"
+                    ],
+                    "sons-photoshoot": [
+                        "images/70th-anniversary/221A2359.jpg", "images/70th-anniversary/221A2383.jpg", "images/70th-anniversary/221A2389.jpg", "images/70th-anniversary/NNK04561.jpg", "images/70th-anniversary/NNK04579.jpg",
+                        "images/70th-anniversary/NNK04601.jpg", "images/70th-anniversary/NNK04602.jpg", "images/70th-anniversary/NNK04621.jpg", "images/70th-anniversary/NNK04623.jpg", "images/70th-anniversary/NNK04638.jpg",
+                        "images/70th-anniversary/NNK04639.jpg", "images/70th-anniversary/NNK04651.jpg", "images/70th-anniversary/NNK04658.jpg"
+                    ]
+                }
             }
-            // Add other cases as needed
         };
 
         const currentProject = portfolioData[projectId];
@@ -312,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('project-category').innerText = currentProject.category;
 
             // Tab Switching Logic
-            const tabs = document.querySelectorAll('.tab-btn');
+            const tabsContainer = document.querySelector('.portfolio-tabs');
             const galleryContainer = document.getElementById('gallery-container');
 
             function loadGallery(tabName) {
@@ -330,21 +356,42 @@ document.addEventListener('DOMContentLoaded', () => {
                     div.innerHTML = `<img src="${imgSrc}" alt="${tabName} image">`;
                     galleryContainer.appendChild(div);
                 });
+
+                // Add fade-in observation for new items
+                const fadeElements = galleryContainer.querySelectorAll('.fade-in');
+                fadeElements.forEach(el => observer.observe(el));
+            }
+
+            // Generate Tabs Dynamically
+            if (tabsContainer) {
+                tabsContainer.innerHTML = '';
+                Object.keys(currentProject.tabs).forEach((tabKey, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+                    btn.dataset.tab = tabKey;
+
+                    // Format tab label: father-mother-70-years -> Father & Mother (70 Years)
+                    let label = tabKey;
+                    if (tabKey === 'father-mother-70-years') label = 'Father & Mother (70 Years)';
+                    else if (tabKey === 'sons-and-grandchildren') label = 'Sons & Grandchildren';
+                    else if (tabKey === 'sons-photoshoot') label = "Sons' Photoshoot";
+                    else label = tabKey.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+                    btn.innerText = label;
+
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+                        btn.classList.add('active');
+                        loadGallery(tabKey);
+                    });
+
+                    tabsContainer.appendChild(btn);
+                });
             }
 
             // Initial Load
-            loadGallery('engagement');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove active class
-                    tabs.forEach(t => t.classList.remove('active'));
-                    // Add active class
-                    tab.classList.add('active');
-                    // Load content
-                    loadGallery(tab.dataset.tab);
-                });
-            });
+            const firstTab = Object.keys(currentProject.tabs)[0];
+            if (firstTab) loadGallery(firstTab);
 
         } else {
             // Fallback if ID not found

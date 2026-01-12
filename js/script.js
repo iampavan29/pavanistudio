@@ -1,7 +1,51 @@
 // Global variable for Intersection Observer
 let observer;
 
+// Theme Toggle Logic
+const initTheme = () => {
+    const themeBtn = document.querySelector('.theme-toggle-btn');
+    const themeIcon = themeBtn?.querySelector('i');
+    const html = document.documentElement;
+
+    // Check Local Storage or System Preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    // Determine initial theme (Default is Dark if nothing saved)
+    let currentTheme = savedTheme || (systemPrefersLight ? 'light' : 'dark');
+
+    // Apply Theme
+    if (currentTheme === 'light') {
+        html.setAttribute('data-theme', 'light');
+        if (themeIcon) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+    }
+
+    // Toggle Event
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            const isLight = html.getAttribute('data-theme') === 'light';
+            
+            if (isLight) {
+                html.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    
     // Navigation Scroll Effect
     const header = document.querySelector('.main-header');
 

@@ -309,6 +309,19 @@ img {
     cursor: pointer;
 }
 
+/* Force white text on transparent header for visibility over dark hero */
+.main-header:not(.scrolled) .logo a,
+.main-header:not(.scrolled) .nav-links li a,
+.main-header:not(.scrolled) .theme-toggle-btn {
+    color: #fff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.main-header:not(.scrolled) .logo a span.gold-text {
+    /* Keep primary accent but ensure it pops */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 /* Hero Section */
 .hero-section {
     height: 100vh;
@@ -346,7 +359,8 @@ img {
 .hero-content h1 {
     font-size: 4rem;
     font-weight: 800;
-    color: var(--text-color);
+    color: #f4f4f4;
+    /* Always light for dark video bg */
     /* Dynamic Text */
     margin-bottom: 25px;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -354,7 +368,8 @@ img {
 
 .hero-content p {
     font-size: 1.2rem;
-    color: var(--text-muted);
+    color: #e8e8e8;
+    /* Always light for dark video bg */
     /* Dynamic Text */
     margin-bottom: 30px;
 }
@@ -963,7 +978,7 @@ img {
     position: relative;
     padding-left: 30px;
     font-size: 1.05rem;
-    color: #ccc;
+    color: var(--text-muted);
     transition: all 0.3s ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: block;
@@ -1193,9 +1208,37 @@ img {
     transform: rotate(360deg);
 }
 
-/* Specific Brand Hover Colors - OPTIONAL: Commented out to maintain strict luxury theme
-.social-links a.facebook:hover { background: #1877F2; border-color: #1877F2; color: #fff; }
-*/
+/* Specific Brand Colors */
+.social-links a.facebook {
+    background-color: #1877F2;
+    border-color: #1877F2;
+    color: #fff;
+}
+
+.social-links a.whatsapp {
+    background-color: #25D366;
+    border-color: #25D366;
+    color: #fff;
+}
+
+.social-links a.instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    border-color: #d6249f;
+    color: #fff;
+}
+
+.social-links a.youtube {
+    background-color: #FF0000;
+    border-color: #FF0000;
+    color: #fff;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    /* Maintain brand color on hover, just add glow/lift */
+    filter: brightness(1.1);
+}
 
 .copyright {
     text-align: center;
@@ -1277,7 +1320,7 @@ img {
 }
 
 .loc-details p {
-    color: #aaa;
+    color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 15px;
@@ -1446,7 +1489,7 @@ img {
 
 .slide-caption p {
     font-size: 1rem;
-    color: #ccc;
+    color: var(--ivory);
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -1602,7 +1645,7 @@ img {
 
 .c-item p,
 .c-item p a {
-    color: #aaa;
+    color: var(--text-muted);
     line-height: 1.6;
     text-decoration: none;
     transition: var(--transition);
@@ -1697,7 +1740,7 @@ img {
 }
 
 .case-study-overlay p {
-    color: #ccc;
+    color: var(--ivory);
     font-size: 1rem;
 }
 

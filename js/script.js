@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "marriage": [],
                     "reception": [],
                     "highlights": ["images/portfolio-item-3.jpg"],
-                    "videos": []
+                    "videos": ["https://www.youtube.com/embed/_XaBA778lbQ?si=ON7HFamWDZsADlQW"]
                 }
             },
             "anniversary-70": {
@@ -405,10 +405,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                images.forEach(imgSrc => {
+                items.forEach(itemSrc => {
                     const div = document.createElement('div');
                     div.className = 'gallery-item fade-in';
-                    div.innerHTML = `<img src="${imgSrc}" alt="${tabName} image">`;
+
+                    if (itemSrc.includes('youtube.com') || itemSrc.includes('youtu.be')) {
+                        // Render Video
+                        div.innerHTML = `
+                            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+                                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                                    src="${itemSrc}" 
+                                    title="YouTube video player" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>`;
+                        // Make it span full width if desired or keep grid
+                        div.style.gridColumn = "1 / -1";
+                    } else {
+                        // Render Image
+                        div.innerHTML = `<img src="${itemSrc}" alt="${tabName} image">`;
+                    }
+
                     galleryContainer.appendChild(div);
                 });
 
